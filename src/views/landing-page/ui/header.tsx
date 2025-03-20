@@ -1,4 +1,5 @@
 "use client"
+import { ModeSwitcher } from '@/shared/components'
 import { Button } from '@/shared/ui/button'
 import { LogIn, Menu, X } from 'lucide-react'
 import Link from 'next/link'
@@ -44,11 +45,12 @@ const Header = () => {
                     </div>
 
                     {/* Login button for large screens */}
-                    <div className="hidden lg:flex">
+                    <div className="hidden lg:flex gap-2">
                         <Button size="lg" className="flex gap-3 items-center">
                             <LogIn />
                             Log In
                         </Button>
+                        <ModeSwitcher />
                     </div>
 
                     {/* Hamburger menu button for mobile */}

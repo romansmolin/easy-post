@@ -5,7 +5,7 @@ import { Check, Heart, Video } from 'lucide-react'
 
 const HeroSections = () => {
     return (
-        <section className='px-4 flex flex-col md:flex-row md:gap-9 lg:max-w-screen-lg md:mx-auto md:items-center py-8 md:py-22'>
+        <section className='px-4 flex flex-col md:flex-row md:gap-9 lg:max-w-screen-lg md:mx-auto md:items-center pt-16 pb-8 md:py-22'>
             {/* Left Side */}
             <div className="flex flex-col items-center gap-9 md:flex-1 md:items-start">
 

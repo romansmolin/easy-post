@@ -1,5 +1,4 @@
 import { Separator } from "@/shared/ui/separator";
-import { ChevronsDownIcon } from "lucide-react";
 import Link from "next/link";
 
 export const FooterSection = () => {
@@ -9,9 +8,29 @@ export const FooterSection = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
                     <div className="col-span-full xl:col-span-2">
                         <Link href="#" className="flex font-bold items-center">
-                            <ChevronsDownIcon className="w-9 h-9 mr-2 bg-gradient-to-tr from-primary via-primary/70 to-primary rounded-lg border border-secondary" />
-
-                            <h3 className="text-2xl">Shadcn</h3>
+                            <div className="text-primary">
+                                <svg
+                                    width="70"
+                                    height="70"
+                                    viewBox="0 0 100 100"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                    className='h-11 w-fit md:w-auto md:h-auto'
+                                >
+                                    <path d="M20,30 Q50,5 80,30" strokeLinecap="round" strokeWidth="5" />
+                                    <path d="M20,70 Q50,95 80,70" strokeLinecap="round" strokeWidth="5" />
+                                    <circle cx="50" cy="50" r="15" />
+                                    <line x1="50" y1="50" x2="58" y2="50" strokeLinecap="round" />
+                                    <line x1="50" y1="50" x2="50" y2="42" strokeLinecap="round" />
+                                    <circle cx="25" cy="25" r="2.5" fill="currentColor" />
+                                    <circle cx="75" cy="25" r="2.5" fill="currentColor" />
+                                    <circle cx="25" cy="75" r="2.5" fill="currentColor" />
+                                    <circle cx="75" cy="75" r="2.5" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl">Easy Post</h3>
                         </Link>
                     </div>
 
