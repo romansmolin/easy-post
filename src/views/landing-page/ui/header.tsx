@@ -46,7 +46,7 @@ const Header = () => {
 
                     {/* Login button for large screens */}
                     <div className="hidden lg:flex gap-2">
-                        <Button size="lg" className="flex gap-3 items-center" asChild>
+                        <Button size="lg" className="flex gap-2 items-center" asChild>
                             <Link href='/auth'>
                                 <LogIn />
                                 Log In
@@ -72,7 +72,7 @@ const Header = () => {
                     <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Features</Link>
                     <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Platforms</Link>
                     <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
-                    <Button size="lg" className="flex gap-3 items-center" onClick={() => setMobileMenuOpen(false)} asChild>
+                    <Button size="lg" className="flex gap-2 items-center" onClick={() => setMobileMenuOpen(false)} asChild>
                         <Link href='/auth'>
                             <LogIn />
                             Log In

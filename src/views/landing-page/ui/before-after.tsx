@@ -40,7 +40,7 @@ export default function BeforeAfter() {
     );
 
     return (
-        <section className="lg:max-w-screen-lg mx-auto py-8 md:py-20 flex flex-col gap-7">
+        <section className="flex flex-col gap-7">
             <h2 className='text-center text-4xl md:leading-16 md:text-5xl font-bold'>Get the Most Out of Your Posts with 
                 <span className="text-primary"> EasyPost</span>
             </h2>

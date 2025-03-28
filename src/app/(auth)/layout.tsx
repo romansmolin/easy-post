@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "../_providers/theme-provider";
 import "../globals.css";
-
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
@@ -27,17 +26,17 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}>
-                <AuthHeader />
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange
-                >
-                    <main className="min-h-svh flex flex-col items-center justify-center gap-6 bg-background">
-                        {children}
-                    </main>
-                </ThemeProvider>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="system"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
+                        <AuthHeader />
+                        <main className="min-h-svh flex flex-col items-center justify-center gap-6 bg-background">
+                            {children}
+                        </main>
+                    </ThemeProvider>
             </body>
         </html>
     );

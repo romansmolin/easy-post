@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "next-themes";
+import { Header, FooterSection } from "@/views/landing-page";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -32,7 +33,11 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					{children}
+					<Header />
+					<main className="flex flex-col mx-auto lg:max-w-screen-lg py-8 md:py-20 gap-28">
+						{children}
+					</main>
+					<FooterSection />
 				</ThemeProvider>
 			</body>
 		</html>
