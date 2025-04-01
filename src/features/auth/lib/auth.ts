@@ -1,34 +1,45 @@
+import api from "@/shared/api/axios";
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google"
 
-const handler = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
         Google({
-            clientId: process.env.GOOGLE_CLIENT_ID ?? '',
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            authorization: {
+                params: {
+                    prompt: "consent",
+                    access_type: "offline",
+                    response_type: "code",
+                },
+            },
         })
     ],
-    pages: {
-        signIn: '/auth',
-        error: '/auth/error',
-    },
     session: {
         strategy: "jwt",
     },
     callbacks: {
         async session({ session, token }) {
-            // Log the session and token data
-            console.log('Session Callback:', {
-                session,
-                token,
-            })
-            
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            session.user = token.user as any;
+            const { email, name, sub } = token
+
+            try {
+                const res = await api.post('/signup', {
+                    name,
+                    email,
+                    googleId: sub
+                })
+                
+                if (res.status === 201) {
+                    session.user = token.user as any
+                }
+            } catch (error) {
+                session.user = token.user as any;
+            }
+
             return session;
         },
-        async jwt({ token, user, trigger, session }) {
-            // Log the JWT callback data
+        async jwt({ token, user, trigger, session }) {            
             console.log('JWT Callback:', {
                 token,
                 user,
@@ -48,6 +59,3 @@ const handler = NextAuth({
         },
     },
 })
-
-export const { auth, signIn, signOut, update } = handler
-export const handlers = handler

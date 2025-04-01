@@ -1,8 +1,21 @@
 "use client"
 
 import { Button } from '@/shared/ui/button'
+import { signIn } from 'next-auth/react'
 import React from 'react'
-import { googleAuthenticate } from '../actions/google-authenticate'
+
+
+const googleAuthenticate = async () => {
+    try {
+        const result = await signIn('google', {
+            redirectTo: '/dashboard',
+        })
+        return result
+    } catch (error) {
+        console.error('Google authentication failed:', error)
+        throw new Error('Failed to authenticate with Google')
+    }
+}
 
 const GoogleAuthButton = () => {
     return (
