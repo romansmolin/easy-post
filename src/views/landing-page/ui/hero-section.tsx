@@ -58,7 +58,7 @@ const HeroSections = () => {
                     height={700}
                     alt='Hero Section Image For Medium Screens'
                     src="/assets/hero-xxl.png"
-                    className=''
+                    className='max-w-[120%] h-auto'
                     priority
                 />
             </div>

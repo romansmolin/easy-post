@@ -5,36 +5,11 @@ import { Input } from '@/shared/ui/input'
 import { Label } from '@radix-ui/react-label'
 import { GalleryVerticalEnd } from 'lucide-react'
 import { signIn } from 'next-auth/react'
-import React, { FormEvent, useState } from 'react'
 
-const LoginForm = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const handleSubmit = async (e: FormEvent) => {
-        // e.preventDefault()
-        
-        // const result = await signIn('credentials', {
-        //     email,
-        //     password,
-        //     redirect: false,
-        // })
-        
-        // if (result?.error) {
-        //     console.error('Login failed:', result.error)
-        // } else {
-        //     // Handle successful login
-        //     console.log('Login successful')
-        // }
-    }
-
-    const handleGoogleSignIn = () => {
-        // signIn('google', { callbackUrl: '/' })
-    }
-
+const AuthForm = () => {
     return (
         <div className={"flex flex-col gap-6"}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={() => {}}>
                 <div className="flex flex-col gap-6">
                     <div className="flex flex-col items-center gap-2">
                         <a
@@ -62,8 +37,6 @@ const LoginForm = () => {
                                 type="email"
                                 placeholder="m@example.com"
                                 required
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="grid gap-2">
@@ -72,8 +45,6 @@ const LoginForm = () => {
                                 id="password"
                                 type="password"
                                 required
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <Button type="submit" className="w-full">
@@ -103,7 +74,6 @@ const LoginForm = () => {
                         <Button 
                             variant="outline" 
                             className="w-full"
-                            onClick={handleGoogleSignIn}
                             type="button"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -125,4 +95,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default AuthForm
