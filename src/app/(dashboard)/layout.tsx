@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "../_providers/theme-provider";
 import { NextAuthProvider } from "../_providers/next-auth-provider";
 import "../globals.css";
+import { SidebarInset, SidebarProvider } from "@/shared/ui/sidebar";
+import AppSidebar from "../_layout/dashboard/app-sidebar";
+import Header from "../_layout/dashboard/header";
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
@@ -29,12 +32,15 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <aside className="w-[20%] h-[80] border-r border-r-primary rounded-t-2xl roounded-b-2x">
-                        sd
-                        </aside>
-                        <main className="min-h-svh flex flex-col items-center justify-center gap-6 bg-background">
-                            {children}
-                        </main>
+                        <SidebarProvider defaultOpen>
+                            <AppSidebar />
+                            <SidebarInset>
+                                <Header />
+                                <main className="min-h-svh flex flex-col items-center justify-center gap-6 bg-background">
+                                    {children}
+                                </main>
+                            </SidebarInset>
+                        </SidebarProvider>
                     </ThemeProvider>
                 </NextAuthProvider>
             </body>

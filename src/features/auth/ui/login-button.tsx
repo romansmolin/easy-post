@@ -2,7 +2,6 @@
 
 import { useSession, signOut } from "next-auth/react"
 import Link from "next/link"
-import { useEffect } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar"
 import { Button } from "@/shared/ui/button"
 import {
@@ -13,7 +12,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu"
-import { LogIn, User, Settings, HelpCircle, LogOut } from "lucide-react"
+import { LogIn, User, Settings, HelpCircle, LogOut, Zap } from "lucide-react"
 
 const LoginButton = () => {
     const { data: session } = useSession()
@@ -41,7 +40,7 @@ const LoginButton = () => {
                     variant="ghost"
                     className="relative h-10 w-10 rounded-full p-0 hover:bg-slate-100 transition-all duration-300"
                 >
-                    <Avatar className="h-10 w-10 border-2 border-emerald-500 shadow-md">
+                    <Avatar className="h-10 w-10 border-2 primary shadow-md">
                         <AvatarImage src={session.user.image || ""} alt="User Avatar" />
                         <AvatarFallback className="bg-gradient-to-r from-teal-500 to-emerald-500 text-white">
                             {session.user.name ? session.user.name.substring(0, 2).toUpperCase() : "CN"}
@@ -59,8 +58,10 @@ const LoginButton = () => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="cursor-pointer">
-                    <User className="mr-2 h-4 w-4" />
-                    <span>Profile</span>
+                    <Zap className="mr-2 h-4 w-4" />
+                    <Link href="/dashboard">
+                        Dashboard
+                    </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">
                     <Settings className="mr-2 h-4 w-4" />
