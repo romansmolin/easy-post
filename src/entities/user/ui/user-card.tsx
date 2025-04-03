@@ -69,7 +69,7 @@ const UserCard = ({ user }: UserCardProps) => {
                 </Avatar>
                 <div className="flex-1 overflow-hidden">
                     <div className="flex items-center gap-2">
-                        <p className="truncate text-sm font-medium">{user.name}</p>
+                        <p className="truncate text-sm font-medium">{session?.user.name || ''}</p>
                         {user.plan && user.plan !== "free" && (
                             <Badge variant="outline" className="capitalize">
                                 {user.plan}

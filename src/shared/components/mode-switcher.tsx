@@ -15,12 +15,10 @@ export const ModeSwitcher = () => {
         >
             <div className="flex gap-2 dark:hidden hover:[&>svg]:text-white">
                 <Moon className="size-5 text-primary dark:text-white" />
-                <span className="block lg:hidden"> Escuro </span>
             </div>
 
             <div className="dark:flex gap-2 hidden hover:[&>svg]:text-white">
                 <Sun className="size-5 text-primary dark:text-white" />
-                <span className="block lg:hidden">Claro</span>
             </div>
 
             <span className="sr-only">Trocar de tema</span>
