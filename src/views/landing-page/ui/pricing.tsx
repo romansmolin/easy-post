@@ -75,7 +75,7 @@ export const PricingSection = () => {
                 Get unlimitted access
             </h2>
 
-            <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground pb-10">
+            <h3 className="md:w-1/2 mx-auto text-xl text-center text-black dark:text-white pb-10">
                 Lorem ipsum dolor sit amet consectetur adipisicing reiciendis.
             </h3>
 
@@ -120,12 +120,7 @@ export const PricingSection = () => {
                                     </CardContent>
 
                                     <CardFooter className="mt-auto">
-                                        <Button
-                                            variant={
-                                                popular === PopularPlan?.YES ? "default" : "secondary"
-                                            }
-                                            className="w-full"
-                                        >
+                                        <Button className="w-full">
                                             {buttonText}
                                         </Button>
                                     </CardFooter>
@@ -170,10 +165,7 @@ export const PricingSection = () => {
                                     </CardContent>
 
                                     <CardFooter className="mt-auto">
-                                        <Button
-                                            variant={
-                                                popular === PopularPlan?.YES ? "default" : "secondary"
-                                            }
+                                        <Button 
                                             className="w-full"
                                         >
                                             {buttonText}

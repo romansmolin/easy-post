@@ -1,16 +1,11 @@
-import { AuthHeader } from "@/views/auth";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Metadata } from "next";
+import { Geist } from "next/font/google";
 import { ThemeProvider } from "../_providers/theme-provider";
 import { NextAuthProvider } from "../_providers/next-auth-provider";
 import "../globals.css";
+import Header from "../_layout/basic/header";
 const geistSans = Geist({
     variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
     subsets: ["latin"],
 });
 
@@ -26,7 +21,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}>
+            <body className={`${geistSans.variable} antialiased overflow-hidden`}>
                 <NextAuthProvider>
                     <ThemeProvider
                         attribute="class"
@@ -34,8 +29,8 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <AuthHeader />
-                        <main className="min-h-svh flex flex-col items-center justify-center gap-6 bg-background">
+                        <Header isAuth/>
+                        <main className="min-h-svh -mt-[88px] flex flex-col items-center justify-center gap-6 bg-background">
                             {children}
                         </main>
                     </ThemeProvider>

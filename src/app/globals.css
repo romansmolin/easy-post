@@ -79,7 +79,7 @@
 }
 
 .dark {
-  --background: hsl(218 50% 10%);
+  --background: #0d1626;
   --foreground: oklch(0.95 0.01 218);
 
   --card: hsl(218 50% 10%);
@@ -97,13 +97,13 @@
   --muted: oklch(0.7 0.2 218);
   --muted-foreground: hsl(218 5% 100%);
 
-  --accent: oklch(0.25 0.04 180);
+  --accent: oklch(0.7 0.2 218);
   --accent-foreground: oklch(0.95 0.01 218);
 
   --destructive: oklch(0.6 0.25 30);
   --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.5 0.05 218);
+  --border: oklch(0.7 0.2 218);
   --input: oklch(0.5 0.05 218);
   --ring: oklch(0.7 0.2 218);
 }

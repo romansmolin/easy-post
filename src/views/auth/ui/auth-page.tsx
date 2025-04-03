@@ -1,4 +1,4 @@
-import { AuthForm } from '@/widgets/auth-form'
+import { AuthForm } from '@/widgets/auth'
 import React from 'react'
 
 const AuthPage = () => {

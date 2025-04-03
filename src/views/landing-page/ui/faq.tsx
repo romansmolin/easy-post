@@ -55,7 +55,7 @@ export const FAQSection = () => {
             <Accordion type="single" collapsible className="AccordionRoot flex flex-col gap-5">
                 {FAQList.map(({ question, answer, value }) => (
                     <AccordionItem key={value} value={value} className="px-2 py-1 rounded-2xl border-1 border-primary">
-                        <AccordionTrigger className="text-left">
+                        <AccordionTrigger className="text-left text-primary dark:text-white">
                             {question}
                         </AccordionTrigger>
 

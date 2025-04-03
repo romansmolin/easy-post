@@ -22,6 +22,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     callbacks: {
         async session({ session, token }) {
             const { email, name, sub } = token
+            console.log(token)
 
             try {
                 const res = await api.post('/signup', {
@@ -40,13 +41,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             return session;
         },
         async jwt({ token, user, trigger, session }) {            
-            console.log('JWT Callback:', {
-                token,
-                user,
-                trigger,
-                session,
-            })
-
             if (user) {
                 token.user = user;
             }
@@ -55,6 +49,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 token = { ...token, user: session }
                 return token;
             };
+
             return token;
         },
     },

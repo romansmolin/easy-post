@@ -1,11 +1,12 @@
 "use client"
+import { LoginButton } from '@/features/auth'
 import { ModeSwitcher } from '@/shared/components'
 import { Button } from '@/shared/ui/button'
-import { LogIn, Menu, X } from 'lucide-react'
+import { ArrowBigLeft, LogIn, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-const Header = () => {
+const Header = ({ isAuth }: { isAuth?: boolean }) => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
@@ -36,42 +37,56 @@ const Header = () => {
                     </div>
 
                     {/* Navigation for large screens */}
-                    <div className="hidden lg:flex gap-10">
-                        <Link className="text-xl font-bold" href="#">Pricing</Link>
-                        <Link className="text-xl font-bold" href="#">Reviews</Link>
-                        <Link className="text-xl font-bold" href="#">Features</Link>
-                        <Link className="text-xl font-bold" href="#">Platforms</Link>
-                        <Link className="text-xl font-bold" href="#">FAQ</Link>
-                    </div>
+                    {!isAuth && (
+                        <div className="hidden lg:flex gap-10">
+                            <Link className="text-xl font-bold" href="#">Pricing</Link>
+                            <Link className="text-xl font-bold" href="#">Reviews</Link>
+                            <Link className="text-xl font-bold" href="#">Features</Link>
+                            <Link className="text-xl font-bold" href="#">Platforms</Link>
+                            <Link className="text-xl font-bold" href="#">FAQ</Link>
+                        </div>
+                    )}
 
                     {/* Login button for large screens */}
-                    <div className="hidden lg:flex gap-2">
-                        <Button size="lg" className="flex gap-2 items-center" asChild>
-                            <Link href='/auth'>
-                                <LogIn />
-                                Log In
+                    {!isAuth ? (
+                        <div className="hidden lg:flex gap-2">
+                            <LoginButton />
+                            <ModeSwitcher />
+                        </div>
+                    ) : (
+                        <Button size="lg" asChild>
+                            <Link href='/'>
+                                <ArrowBigLeft />
+                                <span className='hidden sm:block'>Home</span>
                             </Link>
                         </Button>
-                        <ModeSwitcher />
-                    </div>
+                    )}
 
                     {/* Hamburger menu button for mobile */}
-                    <button className="lg:hidden" onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
-                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
+                    {!isAuth && (
+                        <button className="lg:hidden" onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
+                            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                    )}
                 </div>
             </header>
 
-            {isMobileMenuOpen && (
+            {isMobileMenuOpen && !isAuth && (
                 <div className="lg:hidden fixed h-screen w-screen inset-0 z-50 backdrop-blur-md flex flex-col items-center justify-center space-y-8">
                     <button className="absolute top-4 right-4" onClick={() => setMobileMenuOpen(false)}>
                         <X size={24} />
                     </button>
-                    <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
-                    <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Reviews</Link>
-                    <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Features</Link>
-                    <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Platforms</Link>
-                    <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
+
+                    {!isAuth && (
+                        <>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Reviews</Link>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Features</Link>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Platforms</Link>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
+                        </>
+                    )}
+
                     <Button size="lg" className="flex gap-2 items-center" onClick={() => setMobileMenuOpen(false)} asChild>
                         <Link href='/auth'>
                             <LogIn />

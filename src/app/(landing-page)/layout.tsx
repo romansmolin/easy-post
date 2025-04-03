@@ -1,16 +1,13 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Metadata } from "next";
+import { Geist, } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "next-themes";
-import { Header, FooterSection } from "@/views/landing-page";
+import { NextAuthProvider } from "../_providers/next-auth-provider";
+import Header from "../_layout/basic/header";
+import { FooterSection } from "../_layout/basic/footer";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
 	subsets: ["latin"],
 });
 
@@ -26,19 +23,21 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
-				>
-					<Header />
-					<main className="flex flex-col mx-auto lg:max-w-screen-lg py-8 md:py-20 gap-28">
-						{children}
-					</main>
-					<FooterSection />
-				</ThemeProvider>
+			<body className={`${geistSans.variable} antialiased overflow-x-hidden`}>
+				<NextAuthProvider>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange
+					>
+						<Header />
+						<main className="flex flex-col mx-auto lg:max-w-screen-lg py-20 gap-20 md:gap-24 lg:gap-28">
+							{children}
+						</main>
+						<FooterSection />
+					</ThemeProvider>
+				</NextAuthProvider>
 			</body>
 		</html>
 	);

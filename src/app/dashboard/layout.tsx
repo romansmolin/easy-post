@@ -1,4 +1,3 @@
-import { AuthHeader } from "@/views/auth";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "../_providers/theme-provider";
@@ -9,10 +8,6 @@ const geistSans = Geist({
     subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -26,7 +21,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}>
+            <body className={`${geistSans.variable} antialiased overflow-hidden`}>
                 <NextAuthProvider>
                     <ThemeProvider
                         attribute="class"
@@ -34,7 +29,9 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <AuthHeader />
+                        <aside className="w-[20%] h-[80] border-r border-r-primary rounded-t-2xl roounded-b-2x">
+                        sd
+                        </aside>
                         <main className="min-h-svh flex flex-col items-center justify-center gap-6 bg-background">
                             {children}
                         </main>

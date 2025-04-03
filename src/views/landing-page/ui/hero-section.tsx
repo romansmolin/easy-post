@@ -45,7 +45,7 @@ const HeroSections = () => {
                         <Heart />
                         Try For Free
                     </Button>
-                    <Button size="lg" className='bg-transparent border border-primary text-primary hover:bg-primary hover:text-color'>
+                    <Button size="lg" variant="outline">
                         <Video /> Watch Demo
                     </Button>
                 </div>
