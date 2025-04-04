@@ -56,7 +56,7 @@ const menuGroups = [
             {
                 title: "Social Accounts",
                 icon: Users,
-                url: "#",
+                url: "/accounts",
                 // items: [
                 //     {
                 //         title: "Twitter",
