@@ -1,79 +1,71 @@
-import { Button } from "@/shared/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/shared/ui/card";
-import { Check } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs'
+import { Check } from 'lucide-react'
+
 enum PopularPlan {
     NO = 0,
     YES = 1,
 }
 
 interface PlanProps {
-    title: string;
-    popular: PopularPlan;
-    monthlyPrice: number;
-    yearlyPrice: number;
-    description: string;
-    buttonText: string;
-    benefitList: string[];
+    title: string
+    popular: PopularPlan
+    monthlyPrice: number
+    yearlyPrice: number
+    description: string
+    buttonText: string
+    benefitList: string[]
 }
 
 const plans: PlanProps[] = [
     {
-        title: "Starter",
+        title: 'Starter',
         popular: PopularPlan.NO,
         monthlyPrice: 9,
         yearlyPrice: 5,
-        description: "Basic features to get you started.",
-        buttonText: "Get Started",
-        benefitList: [
-            "5 connected social accounts",
-            "Unlimited posts",
-            "Schedule posts",
-            "Carousel posts"
-        ],
+        description: 'Basic features to get you started.',
+        buttonText: 'Get Started',
+        benefitList: ['5 connected social accounts', 'Unlimited posts', 'Schedule posts', 'Carousel posts'],
     },
     {
-        title: "Premium",
+        title: 'Premium',
         popular: PopularPlan.YES,
         monthlyPrice: 18,
         yearlyPrice: 10,
-        description: "More power and features for growing your business.",
-        buttonText: "Get Started",
+        description: 'More power and features for growing your business.',
+        buttonText: 'Get Started',
         benefitList: [
-            "15 connected social accounts",
-            "Unlimited posts",
-            "Schedule posts",
-            "Carousel posts",
-            "AI assistance"
+            '15 connected social accounts',
+            'Unlimited posts',
+            'Schedule posts',
+            'Carousel posts',
+            'AI assistance',
         ],
     },
     {
-        title: "Enterprise",
+        title: 'Enterprise',
         popular: PopularPlan.NO,
         monthlyPrice: 27,
         yearlyPrice: 16,
-        description: "Advanced features for large teams and businesses.",
-        buttonText: "Get Started",
+        description: 'Advanced features for large teams and businesses.',
+        buttonText: 'Get Started',
         benefitList: [
-            "Unlimited connected accounts",
-            "Unlimited posts",
-            "Schedule posts",
-            "Carousel posts",
-            "AI assistance"
+            'Unlimited connected accounts',
+            'Unlimited posts',
+            'Schedule posts',
+            'Carousel posts',
+            'AI assistance',
         ],
     },
-];
+]
 
 export const PricingSection = () => {
     return (
         <section className="px-8 sm:px-0">
-            <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-                Pricing
-            </h2>
+            <h2 className="text-lg text-primary text-center mb-2 tracking-wider">Pricing</h2>
 
-            <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-                Get unlimitted access
-            </h2>
+            <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Get unlimitted access</h2>
 
             <h3 className="md:w-1/2 mx-auto text-xl text-center text-black dark:text-white pb-10">
                 Lorem ipsum dolor sit amet consectetur adipisicing reiciendis.
@@ -87,96 +79,78 @@ export const PricingSection = () => {
 
                 <TabsContent value="monthly">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4">
-                        {plans.map(
-                            ({ title, popular, monthlyPrice, description, buttonText, benefitList }) => (
-                                <Card
-                                    key={title}
-                                    className={
-                                        `${popular === PopularPlan?.YES ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-[1.5px] border-primary lg:scale-[1.1]" : ""} flex flex-col h-full`
-                                    }
-                                >
-                                    <CardHeader>
-                                        <CardTitle className="pb-2">{title}</CardTitle>
+                        {plans.map(({ title, popular, monthlyPrice, description, buttonText, benefitList }) => (
+                            <Card
+                                key={title}
+                                className={`${popular === PopularPlan?.YES ? 'drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-[1.5px] border-primary lg:scale-[1.1]' : ''} flex flex-col h-full`}
+                            >
+                                <CardHeader>
+                                    <CardTitle className="pb-2">{title}</CardTitle>
 
-                                        <CardDescription className="pb-4">
-                                            {description}
-                                        </CardDescription>
+                                    <CardDescription className="pb-4">{description}</CardDescription>
 
-                                        <div>
-                                            <span className="text-3xl font-bold">${monthlyPrice}</span>
-                                            <span className="text-muted-foreground"> /month</span>
-                                        </div>
-                                    </CardHeader>
+                                    <div>
+                                        <span className="text-3xl font-bold">${monthlyPrice}</span>
+                                        <span className="text-muted-foreground"> /month</span>
+                                    </div>
+                                </CardHeader>
 
-                                    <CardContent className="flex">
-                                        <div className="space-y-4">
-                                            {benefitList.map((benefit) => (
-                                                <span key={benefit} className="flex">
-                                                    <Check className="text-primary mr-2" />
-                                                    <h3>{benefit}</h3>
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </CardContent>
+                                <CardContent className="flex">
+                                    <div className="space-y-4">
+                                        {benefitList.map((benefit) => (
+                                            <span key={benefit} className="flex">
+                                                <Check className="text-primary mr-2" />
+                                                <h3>{benefit}</h3>
+                                            </span>
+                                        ))}
+                                    </div>
+                                </CardContent>
 
-                                    <CardFooter className="mt-auto">
-                                        <Button className="w-full">
-                                            {buttonText}
-                                        </Button>
-                                    </CardFooter>
-                                </Card>
-                            )
-                        )}
+                                <CardFooter className="mt-auto">
+                                    <Button className="w-full">{buttonText}</Button>
+                                </CardFooter>
+                            </Card>
+                        ))}
                     </div>
                 </TabsContent>
 
                 <TabsContent value="yearly">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4">
-                        {plans.map(
-                            ({ title, popular, yearlyPrice, description, buttonText, benefitList }) => (
-                                <Card
-                                    key={title}
-                                    className={
-                                        `${popular === PopularPlan?.YES ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-[1.5px] border-primary lg:scale-[1.1]" : ""} flex flex-col h-full`
-                                    }
-                                >
-                                    <CardHeader>
-                                        <CardTitle className="pb-2">{title}</CardTitle>
+                        {plans.map(({ title, popular, yearlyPrice, description, buttonText, benefitList }) => (
+                            <Card
+                                key={title}
+                                className={`${popular === PopularPlan?.YES ? 'drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-[1.5px] border-primary lg:scale-[1.1]' : ''} flex flex-col h-full`}
+                            >
+                                <CardHeader>
+                                    <CardTitle className="pb-2">{title}</CardTitle>
 
-                                        <CardDescription className="pb-4">
-                                            {description}
-                                        </CardDescription>
+                                    <CardDescription className="pb-4">{description}</CardDescription>
 
-                                        <div>
-                                            <span className="text-3xl font-bold">${yearlyPrice}</span>
-                                            <span className="text-muted-foreground"> /month (billed yearly)</span>
-                                        </div>
-                                    </CardHeader>
+                                    <div>
+                                        <span className="text-3xl font-bold">${yearlyPrice}</span>
+                                        <span className="text-muted-foreground"> /month (billed yearly)</span>
+                                    </div>
+                                </CardHeader>
 
-                                    <CardContent className="flex">
-                                        <div className="space-y-4">
-                                            {benefitList.map((benefit) => (
-                                                <span key={benefit} className="flex">
-                                                    <Check className="text-primary mr-2" />
-                                                    <h3>{benefit}</h3>
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </CardContent>
+                                <CardContent className="flex">
+                                    <div className="space-y-4">
+                                        {benefitList.map((benefit) => (
+                                            <span key={benefit} className="flex">
+                                                <Check className="text-primary mr-2" />
+                                                <h3>{benefit}</h3>
+                                            </span>
+                                        ))}
+                                    </div>
+                                </CardContent>
 
-                                    <CardFooter className="mt-auto">
-                                        <Button 
-                                            className="w-full"
-                                        >
-                                            {buttonText}
-                                        </Button>
-                                    </CardFooter>
-                                </Card>
-                            )
-                        )}
+                                <CardFooter className="mt-auto">
+                                    <Button className="w-full">{buttonText}</Button>
+                                </CardFooter>
+                            </Card>
+                        ))}
                     </div>
                 </TabsContent>
             </Tabs>
         </section>
-    );
-};
+    )
+}

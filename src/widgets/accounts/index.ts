@@ -1,3 +1,3 @@
-import ConnectAccountsSection from "./ui/connect-accounts-section";
+import ConnectAccountsSection from './ui/connect-accounts-section'
 
 export { ConnectAccountsSection }

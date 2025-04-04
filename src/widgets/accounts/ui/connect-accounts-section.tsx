@@ -1,15 +1,16 @@
-import React from 'react'
 import {
-	XAddButton,
-	FacebookAddButton,
-	InstagramAddButton,
-	ThreadsAddButton,
-	BlueskyAddButton,
-	LinkedinAddButton,
-	YoutubeAddButton,
-	PinterestAddButton,
-	TiktokAddButton
-} from "@/features/accounts";
+    BlueskyAddButton,
+    FacebookAddButton,
+    InstagramAddButton,
+    LinkedinAddButton,
+    PinterestAddButton,
+    ThreadsAddButton,
+    TiktokAddButton,
+    XAddButton,
+    YoutubeAddButton,
+} from '@/features/accounts'
+
+import React from 'react'
 
 const ConnectAccountsSection = () => {
     return (

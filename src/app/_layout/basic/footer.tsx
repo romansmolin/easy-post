@@ -1,5 +1,5 @@
-import { Separator } from "@/shared/ui/separator";
-import Link from "next/link";
+import { Separator } from '@/shared/ui/separator'
+import Link from 'next/link'
 
 export const FooterSection = () => {
     return (
@@ -17,7 +17,7 @@ export const FooterSection = () => {
                                     fill="none"
                                     stroke="currentColor"
                                     strokeWidth="4"
-                                    className='h-11 w-fit md:w-auto md:h-auto'
+                                    className="h-11 w-fit md:w-auto md:h-auto"
                                 >
                                     <path d="M20,30 Q50,5 80,30" strokeLinecap="round" strokeWidth="5" />
                                     <path d="M20,70 Q50,95 80,70" strokeLinecap="round" strokeWidth="5" />
@@ -134,5 +134,5 @@ export const FooterSection = () => {
                 </section>
             </div>
         </footer>
-    );
-};
+    )
+}

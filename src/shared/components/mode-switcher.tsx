@@ -1,14 +1,15 @@
-"use client"
+'use client'
 
-import { useTheme } from "next-themes";
-import { Button } from "../ui/button";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from 'next-themes'
+
+import { Button } from '../ui/button'
 
 export const ModeSwitcher = () => {
-    const { theme, setTheme } = useTheme();
+    const { theme, setTheme } = useTheme()
     return (
         <Button
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
             className="h-10 w-10 justify-start border-1 border-primary p-2 hover:[&>div>svg]:text-white"
             size="icon"
             variant="outline"
@@ -23,5 +24,5 @@ export const ModeSwitcher = () => {
 
             <span className="sr-only">Trocar de tema</span>
         </Button>
-    );
-};
+    )
+}

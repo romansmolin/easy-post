@@ -1,5 +1,5 @@
-import { AuthPage } from "@/views/auth-page";
+import { AuthPage } from '@/views/auth-page'
 
 export default function Auth() {
-	return <AuthPage />;
+    return <AuthPage />
 }

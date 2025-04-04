@@ -1,13 +1,15 @@
-"use client"
+'use client'
+
 import { LoginButton } from '@/features/auth'
 import { ModeSwitcher } from '@/shared/components'
 import { Button } from '@/shared/ui/button'
 import { ArrowBigLeft, LogIn, Menu, X } from 'lucide-react'
 import Link from 'next/link'
+
 import React, { useState } from 'react'
 
 const Header = ({ isAuth }: { isAuth?: boolean }) => {
-    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
         <>
@@ -22,7 +24,7 @@ const Header = ({ isAuth }: { isAuth?: boolean }) => {
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="4"
-                            className='h-11 w-fit md:w-auto md:h-auto'
+                            className="h-11 w-fit md:w-auto md:h-auto"
                         >
                             <path d="M20,30 Q50,5 80,30" strokeLinecap="round" strokeWidth="5" />
                             <path d="M20,70 Q50,95 80,70" strokeLinecap="round" strokeWidth="5" />
@@ -39,11 +41,21 @@ const Header = ({ isAuth }: { isAuth?: boolean }) => {
                     {/* Navigation for large screens */}
                     {!isAuth && (
                         <div className="hidden lg:flex gap-10">
-                            <Link className="text-xl font-bold" href="#">Pricing</Link>
-                            <Link className="text-xl font-bold" href="#">Reviews</Link>
-                            <Link className="text-xl font-bold" href="#">Features</Link>
-                            <Link className="text-xl font-bold" href="#">Platforms</Link>
-                            <Link className="text-xl font-bold" href="#">FAQ</Link>
+                            <Link className="text-xl font-bold" href="#">
+                                Pricing
+                            </Link>
+                            <Link className="text-xl font-bold" href="#">
+                                Reviews
+                            </Link>
+                            <Link className="text-xl font-bold" href="#">
+                                Features
+                            </Link>
+                            <Link className="text-xl font-bold" href="#">
+                                Platforms
+                            </Link>
+                            <Link className="text-xl font-bold" href="#">
+                                FAQ
+                            </Link>
                         </div>
                     )}
 
@@ -55,9 +67,9 @@ const Header = ({ isAuth }: { isAuth?: boolean }) => {
                         </div>
                     ) : (
                         <Button size="lg" asChild>
-                            <Link href='/'>
+                            <Link href="/">
                                 <ArrowBigLeft />
-                                <span className='hidden sm:block'>Home</span>
+                                <span className="hidden sm:block">Home</span>
                             </Link>
                         </Button>
                     )}
@@ -79,16 +91,31 @@ const Header = ({ isAuth }: { isAuth?: boolean }) => {
 
                     {!isAuth && (
                         <>
-                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
-                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Reviews</Link>
-                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Features</Link>
-                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>Platforms</Link>
-                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>
+                                Pricing
+                            </Link>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>
+                                Reviews
+                            </Link>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>
+                                Features
+                            </Link>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>
+                                Platforms
+                            </Link>
+                            <Link className="text-2xl font-bold" href="#" onClick={() => setMobileMenuOpen(false)}>
+                                FAQ
+                            </Link>
                         </>
                     )}
 
-                    <Button size="lg" className="flex gap-2 items-center" onClick={() => setMobileMenuOpen(false)} asChild>
-                        <Link href='/auth'>
+                    <Button
+                        size="lg"
+                        className="flex gap-2 items-center"
+                        onClick={() => setMobileMenuOpen(false)}
+                        asChild
+                    >
+                        <Link href="/auth">
                             <LogIn />
                             Log In
                         </Link>
@@ -96,9 +123,7 @@ const Header = ({ isAuth }: { isAuth?: boolean }) => {
                 </div>
             )}
         </>
-    );
+    )
 }
-
-
 
 export default Header

@@ -1,23 +1,23 @@
 export default function BeforeAfter() {
     const beforeConfig = {
-        title: "Manual Posting is Hard: Too Much Hassle",
+        title: 'Manual Posting is Hard: Too Much Hassle',
         items: [
-            "Miss the best times to post because scheduling is done manually.",
-            "Switching between apps for each platform is confusing.",
-            "Copying and pasting content wastes valuable time.",
-            "No clear feedback makes it hard to know what works best."
-        ]
-    };
+            'Miss the best times to post because scheduling is done manually.',
+            'Switching between apps for each platform is confusing.',
+            'Copying and pasting content wastes valuable time.',
+            'No clear feedback makes it hard to know what works best.',
+        ],
+    }
 
     const afterConfig = {
-        title: "Automated Posting is Easy: Get More Done",
+        title: 'Automated Posting is Easy: Get More Done',
         items: [
-            "Plan and post on all channels with just a few clicks.",
-            "Automatically post at peak times for better reach.",
-            "Manage all your social accounts from one simple dashboard.",
-            "Get easy insights to boost engagement and grow your audience."
-        ]
-    };
+            'Plan and post on all channels with just a few clicks.',
+            'Automatically post at peak times for better reach.',
+            'Manage all your social accounts from one simple dashboard.',
+            'Get easy insights to boost engagement and grow your audience.',
+        ],
+    }
 
     const renderList = (items: string[]) => (
         <ul className="mt-6 space-y-3 text-base sm:text-lg">
@@ -37,16 +37,16 @@ export default function BeforeAfter() {
                 </li>
             ))}
         </ul>
-    );
+    )
 
     return (
         <section className="flex flex-col gap-7">
-            <h2 className='text-center text-4xl md:leading-16 md:text-5xl font-bold'>Get the Most Out of Your Posts with 
+            <h2 className="text-center text-4xl md:leading-16 md:text-5xl font-bold">
+                Get the Most Out of Your Posts with
                 <span className="text-primary"> EasyPost</span>
             </h2>
             <div className="mx-auto max-w-5xl px-8">
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-
                     {/* Before */}
                     <div className="rounded-2xl bg-white shadow-lg ring-2 ring-inset ring-slate-200">
                         <div className="p-8 sm:p-12">
@@ -65,9 +65,7 @@ export default function BeforeAfter() {
                             <h3 className="font-display mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
                                 {beforeConfig.title}
                             </h3>
-                            <div className="text-slate-600">
-                                {renderList(beforeConfig.items)}
-                            </div>
+                            <div className="text-slate-600">{renderList(beforeConfig.items)}</div>
                         </div>
                     </div>
 
@@ -89,13 +87,11 @@ export default function BeforeAfter() {
                             <h3 className="font-display mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
                                 {afterConfig.title}
                             </h3>
-                            <div className="text-white">
-                                {renderList(afterConfig.items)}
-                            </div>
+                            <div className="text-white">{renderList(afterConfig.items)}</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    );
+    )
 }

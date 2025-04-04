@@ -1,8 +1,9 @@
 import React from 'react'
-import HeroSections from './hero-section'
+
 import BeforeAfter from './before-after'
-import { PricingSection } from './pricing'
 import { FAQSection } from './faq'
+import HeroSections from './hero-section'
+import { PricingSection } from './pricing'
 
 const LandingPage = () => {
     return (

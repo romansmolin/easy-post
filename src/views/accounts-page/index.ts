@@ -1,5 +1,3 @@
-import AccountsPage from "./ui/accounts-page";
+import AccountsPage from './ui/accounts-page'
 
-export {
-    AccountsPage
-}
+export { AccountsPage }

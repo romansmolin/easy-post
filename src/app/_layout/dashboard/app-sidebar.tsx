@@ -1,62 +1,65 @@
-"use client"
+'use client'
+
 import { UserCard } from '@/entities/user'
-import { SidebarHeader, SidebarContent, SidebarFooter, SidebarRail, Sidebar, useSidebar } from '@/shared/ui/sidebar'
-import { LayoutDashboard, Calendar, Layers, BarChart, Users, Twitter, Instagram, FileText, Cog } from 'lucide-react'
-import React from 'react'
-import { SimpleNavMenu } from './simple-nav-menu'
 import { cn } from '@/shared/lib/utils'
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, useSidebar } from '@/shared/ui/sidebar'
+import { BarChart, Calendar, Cog, FileText, Instagram, Layers, LayoutDashboard, Twitter, Users } from 'lucide-react'
+
+import React from 'react'
+
+import { SimpleNavMenu } from './simple-nav-menu'
 
 const menuGroups = [
     {
-        title: "Content",
+        title: 'Content',
         items: [
             {
-                title: "Dashboard",
+                title: 'Dashboard',
                 icon: LayoutDashboard,
-                url: "/dashboard",
+                url: '/dashboard',
             },
             {
-                title: "Calendar",
+                title: 'Calendar',
                 icon: Calendar,
-                url: "/calendar",
+                url: '/calendar',
             },
             {
-                title: "Content Library",
+                title: 'Content Library',
                 icon: Layers,
-                url: "#",
+                url: '#',
                 items: [
                     {
-                        title: "All Content",
-                        url: "/content",
+                        title: 'All Content',
+                        url: '/content',
                     },
                     {
-                        title: "Drafts",
-                        url: "/content/drafts",
+                        title: 'Drafts',
+                        url: '/content/drafts',
                     },
                     {
-                        title: "Scheduled",
-                        url: "/content/scheduled",
+                        title: 'Scheduled',
+                        url: '/content/scheduled',
                     },
                     {
-                        title: "Published",
-                        url: "/content/published",
+                        title: 'Published',
+                        url: '/content/published',
                     },
                 ],
             },
             {
-                title: "Analytics",
+                title: 'Analytics',
                 icon: BarChart,
-                url: "/analytics",
+                url: '/analytics',
             },
         ],
     },
     {
-        title: "Configuration",
+        title: 'Configuration',
         items: [
             {
-                title: "Social Accounts",
+                title: 'Social Accounts',
                 icon: Users,
-                url: "/accounts",
+                url: '/accounts',
                 // items: [
                 //     {
                 //         title: "Twitter",
@@ -71,34 +74,33 @@ const menuGroups = [
                 // ],
             },
             {
-                title: "Templates",
+                title: 'Templates',
                 icon: FileText,
-                url: "/templates",
+                url: '/templates',
             },
             {
-                title: "Settings",
+                title: 'Settings',
                 icon: Cog,
-                url: "/settings",
+                url: '/settings',
             },
         ],
     },
 ]
 
 const userData = {
-    name: "John Doe",
-    email: "john@example.com",
-    avatar: "/placeholder.svg?height=40&width=40",
-    plan: "free", // Can be "free", "pro", "business" or null
+    name: 'John Doe',
+    email: 'john@example.com',
+    avatar: '/placeholder.svg?height=40&width=40',
+    plan: 'free', // Can be "free", "pro", "business" or null
 }
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
-
     const { state } = useSidebar()
-    const isCollapsed = state === "collapsed"
+    const isCollapsed = state === 'collapsed'
 
     return (
-        <Sidebar className='!bg-pink-50' collapsible="icon" {...props}>
-            <SidebarHeader className=''>
+        <Sidebar className="!bg-pink-50" collapsible="icon" {...props}>
+            <SidebarHeader className="">
                 <div className="flex items-center gap-2 pt-2">
                     <div className="text-primary">
                         <svg
@@ -109,7 +111,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="4"
-                            className='h-11 w-fit md:w-auto md:h-auto'
+                            className="h-11 w-fit md:w-auto md:h-auto"
                         >
                             <path d="M20,30 Q50,5 80,30" strokeLinecap="round" strokeWidth="5" />
                             <path d="M20,70 Q50,95 80,70" strokeLinecap="round" strokeWidth="5" />
@@ -122,24 +124,18 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
                             <circle cx="75" cy="75" r="2.5" fill="currentColor" />
                         </svg>
                     </div>
-                    {!isCollapsed && (
-                        <h2 className="text-lg font-semibold">EasyPost</h2>
-                    )}
+                    {!isCollapsed && <h2 className="text-lg font-semibold">EasyPost</h2>}
                 </div>
             </SidebarHeader>
 
             <SidebarContent>
                 {menuGroups.map((group) => (
-                    <SimpleNavMenu
-                        key={group.title}
-                        title={group.title}
-                        items={group.items}
-                    />
+                    <SimpleNavMenu key={group.title} title={group.title} items={group.items} />
                 ))}
             </SidebarContent>
 
             <SidebarFooter>
-                <div className={cn(!isCollapsed && "p-2")}>
+                <div className={cn(!isCollapsed && 'p-2')}>
                     <UserCard user={userData} />
                 </div>
             </SidebarFooter>
@@ -148,6 +144,5 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
         </Sidebar>
     )
 }
-
 
 export default AppSidebar

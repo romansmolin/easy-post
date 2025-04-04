@@ -1,5 +1,3 @@
-import { ModeSwitcher } from "./mode-switcher";
+import { ModeSwitcher } from './mode-switcher'
 
-export {
-    ModeSwitcher
-}
+export { ModeSwitcher }

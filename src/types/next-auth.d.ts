@@ -10,7 +10,7 @@ declare module 'next-auth' {
             accessToken?: string
         }
     }
-    
+
     interface User {
         id?: string
         name?: string | null
@@ -18,4 +18,4 @@ declare module 'next-auth' {
         image?: string | null
         accessToken?: string
     }
-} 
+}

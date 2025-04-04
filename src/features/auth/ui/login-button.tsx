@@ -1,9 +1,7 @@
-"use client"
+'use client'
 
-import { useSession, signOut } from "next-auth/react"
-import Link from "next/link"
-import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar"
-import { Button } from "@/shared/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar'
+import { Button } from '@/shared/ui/button'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -11,20 +9,17 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu"
-import { LogIn, User, Settings, HelpCircle, LogOut, Zap } from "lucide-react"
+} from '@/shared/ui/dropdown-menu'
+import { HelpCircle, LogIn, LogOut, Settings, User, Zap } from 'lucide-react'
+import { signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 const LoginButton = () => {
     const { data: session } = useSession()
 
-
     if (!session) {
         return (
-            <Button
-                size="lg"
-                className="flex items-center gap-2 shadow-lg hover:shadow-xl"
-                asChild
-            >
+            <Button size="lg" className="flex items-center gap-2 shadow-lg hover:shadow-xl" asChild>
                 <Link href="/auth">
                     <LogIn className="h-4 w-4" />
                     <span>Log In</span>
@@ -41,9 +36,9 @@ const LoginButton = () => {
                     className="relative h-10 w-10 rounded-full p-0 hover:bg-slate-100 transition-all duration-300"
                 >
                     <Avatar className="h-10 w-10 border-2 primary shadow-md">
-                        <AvatarImage src={session.user.image || ""} alt="User Avatar" />
+                        <AvatarImage src={session.user.image || ''} alt="User Avatar" />
                         <AvatarFallback className="bg-gradient-to-r from-teal-500 to-emerald-500 text-white">
-                            {session.user.name ? session.user.name.substring(0, 2).toUpperCase() : "CN"}
+                            {session.user.name ? session.user.name.substring(0, 2).toUpperCase() : 'CN'}
                         </AvatarFallback>
                     </Avatar>
                     <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald-500 border-2 border-white"></span>
@@ -52,16 +47,14 @@ const LoginButton = () => {
             <DropdownMenuContent className="w-56 bg-background" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">{session.user.name || "User"}</p>
-                        <p className="text-xs leading-none text-muted-foreground">{session.user.email || ""}</p>
+                        <p className="text-sm font-medium leading-none">{session.user.name || 'User'}</p>
+                        <p className="text-xs leading-none text-muted-foreground">{session.user.email || ''}</p>
                     </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="cursor-pointer">
                     <Zap className="mr-2 h-4 w-4" />
-                    <Link href="/dashboard">
-                        Dashboard
-                    </Link>
+                    <Link href="/dashboard">Dashboard</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">
                     <Settings className="mr-2 h-4 w-4" />
@@ -82,4 +75,3 @@ const LoginButton = () => {
 }
 
 export default LoginButton
-

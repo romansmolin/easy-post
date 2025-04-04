@@ -1,5 +1,3 @@
-import AuthPage from "./ui/auth-page";
+import AuthPage from './ui/auth-page'
 
-export {
-    AuthPage,
-}
+export { AuthPage }

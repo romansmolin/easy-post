@@ -1,5 +1,3 @@
-import AuthForm from "./ui/auth-form";
+import AuthForm from './ui/auth-form'
 
-export {
-    AuthForm
-}
+export { AuthForm }

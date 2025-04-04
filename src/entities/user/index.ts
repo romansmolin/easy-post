@@ -1,5 +1,3 @@
-import UserCard from "./ui/user-card";
+import UserCard from './ui/user-card'
 
-export {
-    UserCard
-}
+export { UserCard }
