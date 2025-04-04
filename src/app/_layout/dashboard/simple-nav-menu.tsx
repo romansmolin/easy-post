@@ -49,7 +49,7 @@ export function SimpleNavMenu({ title, items }: NavMenuGroupProps) {
                   <SidebarMenuItem>
                     <SidebarMenuButton
                       tooltip={item.title}
-                      className={cn(isCollapsed && "justify-center")}
+                      className={cn("h-[35px]", isCollapsed && "justify-center")}
                       onClick={() => toggleMenu(item.title)}
                     >
                       {item.icon && <item.icon className="size-4" />}
@@ -85,7 +85,7 @@ export function SimpleNavMenu({ title, items }: NavMenuGroupProps) {
                   asChild
                   isActive={item.isActive}
                   tooltip={item.title}
-                  className={cn(isCollapsed && "justify-center")}
+                  className={cn("h-[35px]", isCollapsed && "justify-center")}
                 >
                   <a href={item.url}>
                     {item.icon && <item.icon className="size-4" />}

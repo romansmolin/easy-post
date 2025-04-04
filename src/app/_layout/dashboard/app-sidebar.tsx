@@ -4,6 +4,7 @@ import { SidebarHeader, SidebarContent, SidebarFooter, SidebarRail, Sidebar, use
 import { LayoutDashboard, Calendar, Layers, BarChart, Users, Twitter, Instagram, FileText, Cog } from 'lucide-react'
 import React from 'react'
 import { SimpleNavMenu } from './simple-nav-menu'
+import { cn } from '@/shared/lib/utils'
 
 const menuGroups = [
     {
@@ -56,18 +57,18 @@ const menuGroups = [
                 title: "Social Accounts",
                 icon: Users,
                 url: "#",
-                items: [
-                    {
-                        title: "Twitter",
-                        icon: Twitter,
-                        url: "/accounts/twitter",
-                    },
-                    {
-                        title: "Instagram",
-                        icon: Instagram,
-                        url: "/accounts/instagram",
-                    },
-                ],
+                // items: [
+                //     {
+                //         title: "Twitter",
+                //         icon: Twitter,
+                //         url: "/accounts/twitter",
+                //     },
+                //     {
+                //         title: "Instagram",
+                //         icon: Instagram,
+                //         url: "/accounts/instagram",
+                //     },
+                // ],
             },
             {
                 title: "Templates",
@@ -138,7 +139,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
             </SidebarContent>
 
             <SidebarFooter>
-                <div className="p-2">
+                <div className={cn(!isCollapsed && "p-2")}>
                     <UserCard user={userData} />
                 </div>
             </SidebarFooter>

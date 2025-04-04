@@ -34,28 +34,12 @@ const UserCard = ({ user }: UserCardProps) => {
     // Collapsed version of the user card
     if (isCollapsed) {
         return (
-            <TooltipProvider>
-                <Tooltip>
-                    <TooltipTrigger asChild>
-                        <div className="flex justify-center">
-                            <Avatar>
-                                <AvatarImage src={session?.user.image || ''} alt={session?.user.name || ''} />
-                                <AvatarFallback>{initials}</AvatarFallback>
-                            </Avatar>
-                        </div>
-                    </TooltipTrigger>
-                    <TooltipContent side="right">
-                        <div>
-                            <p className="font-medium">{user.name}</p>
-                            <p className="text-xs text-muted-foreground">{user.email}</p>
-                            {(!user.plan || user.plan === "free") && <p className="text-xs text-muted-foreground mt-1">Free Plan</p>}
-                            {user.plan && user.plan !== "free" && (
-                                <p className="text-xs text-muted-foreground mt-1 capitalize">{user.plan} Plan</p>
-                            )}
-                        </div>
-                    </TooltipContent>
-                </Tooltip>
-            </TooltipProvider>
+            <div className="flex justify-center cursor-pointer">
+                <Avatar className="border-2 primary shadow-md rounded-full">
+                    <AvatarImage src={session?.user.image || ''} alt={session?.user.name || ''} className="rounded-full" />
+                    <AvatarFallback>{initials}</AvatarFallback>
+                </Avatar>
+            </div>
         )
     }
 
@@ -64,7 +48,7 @@ const UserCard = ({ user }: UserCardProps) => {
         <div className="rounded-lg border bg-card p-3 text-card-foreground shadow-sm">
             <div className="flex items-center gap-3">
                 <Avatar className="h-10 w-10 border-2 primary shadow-md rounded-full">
-                    <AvatarImage src={session?.user.image || ''} alt={session?.user.name || ''} className="rounded-full"/>
+                    <AvatarImage src={session?.user.image || ''} alt={session?.user.name || ''} className="rounded-full" />
                     <AvatarFallback>{initials}</AvatarFallback>
                 </Avatar>
                 <div className="flex-1 overflow-hidden">
@@ -76,7 +60,7 @@ const UserCard = ({ user }: UserCardProps) => {
                             </Badge>
                         )}
                     </div>
-                    <p className="truncate text-xs text-muted-foreground">{user.email}</p>
+                    <p className="truncate text-xs text-primary">{session?.user.email}</p>
                 </div>
 
             </div>
