@@ -1,8 +1,22 @@
+"use client"
 import { Button } from '@/shared/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/shared/ui/dialog'
 
+
+  const handleConnect = () => {
+    const fbLoginUrl = `https://www.facebook.com/v18.0/dialog/oauth?` +
+      `client_id=${process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID}` +
+      `&redirect_uri=${encodeURIComponent(process.env.NEXT_PUBLIC_FACEBOOK_REDIRECT_URL || '')}` +
+      `&scope=pages_show_list,pages_manage_posts,pages_read_engagement,public_profile` +
+      `&state=${encodeURIComponent(JSON.stringify({ userId }))}` +
+      `&response_type=code`;
+
+    // Open in popup or new window
+    window.open(fbLoginUrl, '_blank', 'width=500,height=600');
+  };
+
 export function FacebookAddButton() {
-    return (
+    return ( 
         <Dialog>
             <DialogTrigger className="w-full" asChild>
                 <Button size="lg" className="bg-[#0866ff] hover:bg-[#0866ff] w-full">
@@ -21,7 +35,7 @@ export function FacebookAddButton() {
                     </DialogDescription>
                 </DialogHeader>
                 <div className="flex justify-end pt-4">
-                    <Button className="bg-[#0866ff] hover:bg-[#0866ff]">
+                    <Button className="bg-[#0866ff] hover:bg-[#0866ff]" onClick={handleConnect}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="#fff"

@@ -1,4 +1,5 @@
 import api from '@/shared/api/axios'
+import axios from 'axios'
 import NextAuth from 'next-auth'
 import Google from 'next-auth/providers/google'
 
@@ -20,29 +21,86 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         strategy: 'jwt',
     },
     callbacks: {
-        async session({ session, token }) {
-            const { email, name, sub } = token
-            console.log(token)
-
+        async signIn({ user, account, profile, email, credentials,  }) {
             try {
-                const res = await api.post('/signup', {
-                    name,
-                    email,
-                    googleId: sub,
-                })
+                if (account?.provider === 'google') {
 
-                if (res.status === 201) {
-                    session.user = token.user as any
+                    try {
+                        const signInRes = await api.post('/signin', {
+                            email: user.email,
+                            provider: 'google',
+                            googleId: user.id
+                        })
+
+                        if (!signInRes.data.user) {
+                            console.log(" we neter here as signInRes is null")
+                            const signUpRes = await api.post('/signup', {
+                                name: user.name,
+                                email: user.email,
+                                googleId: user.id,
+                                image: user.image
+                            })
+                            
+                            user.backendData = signUpRes.data
+                            return true
+                        }
+                        
+                        console.log('SIGN IN: ', signInRes.data)
+                        user.backendData = signInRes.data
+                        return true
+                    } catch (signInErr) {
+                        console.log(signInErr)
+                    }
                 }
-            } catch (error) {
-                session.user = token.user as any
+
+                return true
+            } catch (err) {
+                console.error('Auth error:', err)
+                return false
+            }
+        },
+        async session({ session, token }) {
+            if (token.backendData) {
+                session.user = {
+                    ...session.user,
+                    ...token.backendData,
+                    // Ensure required fields have values
+                    id: token.backendData.id || token.sub || "",
+                    email: token.backendData.email || token.email || "",
+                    name: token.backendData.name || token.name || "",
+                }
+                
+                console.log('Session updated with backend data: ', session)
+            } else {
+                // Fallback to token data if no backend data
+                const { email, name, sub } = token
+                
+                if (session.user) {
+                    session.user.id = session.user.id || sub || "";
+                    session.user.email = session.user.email || email || "";
+                    session.user.name = session.user.name || name || "";
+                    // Set a default emailVerified value to satisfy the type
+                    session.user.emailVerified = session.user.emailVerified || null;
+                } else {
+                    session.user = {
+                        id: sub || "",
+                        email: email || "",
+                        name: name || "",
+                        emailVerified: null,
+                    }
+                }
             }
 
             return session
         },
         async jwt({ token, user, trigger, session }) {
+            // Store user data including backend data from signIn
             if (user) {
-                token.user = user
+                token.user = user;
+                // Pass backend data to token if available
+                if (user.backendData) {
+                    token.backendData = user.backendData;
+                }
             }
 
             if (trigger === 'update' && session) {
