@@ -1,4 +1,3 @@
-import { auth } from '@/features/auth/lib/auth'
 import { SidebarInset, SidebarProvider } from '@/shared/ui/sidebar'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -6,7 +5,6 @@ import { redirect } from 'next/navigation'
 
 import AppSidebar from '../_layout/dashboard/app-sidebar'
 import Header from '../_layout/dashboard/header'
-import { NextAuthProvider } from '../_providers/next-auth-provider'
 import { ThemeProvider } from '../_providers/theme-provider'
 import '../globals.css'
 
@@ -25,28 +23,20 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    const session = await auth()
-
-    if (!session) {
-        redirect('/auth')
-    }
-
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${geistSans.variable} antialiased overflow-hidden`}>
-                <NextAuthProvider>
-                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        <SidebarProvider defaultOpen>
-                            <AppSidebar />
-                            <SidebarInset>
-                                <Header />
-                                <main className="min-h-svh flex flex-col items-center justify-center gap-6 bg-background">
-                                    {children}
-                                </main>
-                            </SidebarInset>
-                        </SidebarProvider>
-                    </ThemeProvider>
-                </NextAuthProvider>
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                    <SidebarProvider defaultOpen>
+                        <AppSidebar />
+                        <SidebarInset>
+                            <Header />
+                            <main className="min-h-svh flex flex-col items-center justify-center gap-6 bg-background">
+                                {children}
+                            </main>
+                        </SidebarInset>
+                    </SidebarProvider>
+                </ThemeProvider>
             </body>
         </html>
     )

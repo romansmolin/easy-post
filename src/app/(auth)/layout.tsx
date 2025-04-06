@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 
 import Header from '../_layout/basic/header'
-import { NextAuthProvider } from '../_providers/next-auth-provider'
 import { ThemeProvider } from '../_providers/theme-provider'
 import '../globals.css'
 
@@ -25,15 +24,13 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${geistSans.variable} antialiased overflow-hidden`}>
-                <NextAuthProvider>
-                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        <Header isAuth />
-                        <main className="min-h-svh -mt-[88px] flex flex-col items-center justify-center gap-6 bg-background">
-                            {children}
-                        </main>
-                        <Toaster richColors />
-                    </ThemeProvider>
-                </NextAuthProvider>
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                    <Header isAuth />
+                    <main className="min-h-svh -mt-[88px] flex flex-col items-center justify-center gap-6 bg-background">
+                        {children}
+                    </main>
+                    <Toaster richColors />
+                </ThemeProvider>
             </body>
         </html>
     )

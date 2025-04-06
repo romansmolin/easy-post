@@ -4,7 +4,6 @@ import { Geist } from 'next/font/google'
 
 import { FooterSection } from '../_layout/basic/footer'
 import Header from '../_layout/basic/header'
-import { NextAuthProvider } from '../_providers/next-auth-provider'
 import '../globals.css'
 
 const geistSans = Geist({
@@ -25,15 +24,13 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${geistSans.variable} antialiased overflow-x-hidden`}>
-                <NextAuthProvider>
-                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        <Header />
-                        <main className="flex flex-col mx-auto lg:max-w-screen-lg py-20 gap-20 md:gap-24 lg:gap-28">
-                            {children}
-                        </main>
-                        <FooterSection />
-                    </ThemeProvider>
-                </NextAuthProvider>
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                    <Header />
+                    <main className="flex flex-col mx-auto lg:max-w-screen-lg py-20 gap-20 md:gap-24 lg:gap-28">
+                        {children}
+                    </main>
+                    <FooterSection />
+                </ThemeProvider>
             </body>
         </html>
     )
