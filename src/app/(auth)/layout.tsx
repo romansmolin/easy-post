@@ -1,3 +1,4 @@
+import { Toaster } from '@/shared/ui/sonner'
 import { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 
@@ -30,6 +31,7 @@ export default function RootLayout({
                         <main className="min-h-svh -mt-[88px] flex flex-col items-center justify-center gap-6 bg-background">
                             {children}
                         </main>
+                        <Toaster richColors />
                     </ThemeProvider>
                 </NextAuthProvider>
             </body>
