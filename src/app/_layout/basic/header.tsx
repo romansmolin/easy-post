@@ -6,9 +6,9 @@ import { Button } from '@/shared/ui/button'
 import { ArrowBigLeft, LogIn, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 
-const Header = ({ isAuth }: { isAuth?: boolean }) => {
+const Header = ({ isAuth, children }: { isAuth?: boolean; children: ReactNode }) => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
@@ -62,7 +62,7 @@ const Header = ({ isAuth }: { isAuth?: boolean }) => {
                     {/* Login button for large screens */}
                     {!isAuth ? (
                         <div className="hidden lg:flex gap-2">
-                            <LoginButton />
+                            {children}
                             <ModeSwitcher />
                         </div>
                     ) : (

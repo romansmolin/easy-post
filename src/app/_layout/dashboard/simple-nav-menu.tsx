@@ -14,6 +14,7 @@ import {
     useSidebar,
 } from '@/shared/ui/sidebar'
 import { ChevronDown } from 'lucide-react'
+import Link from 'next/link'
 
 import * as React from 'react'
 
@@ -80,12 +81,12 @@ export function SimpleNavMenu({ title, items }: NavMenuGroupProps) {
                                                 {item.items.map((subItem) => (
                                                     <SidebarMenuSubItem key={subItem.title}>
                                                         <SidebarMenuSubButton asChild isActive={subItem.isActive}>
-                                                            <a href={subItem.url}>
+                                                            <Link href={subItem.url}>
                                                                 {subItem.icon && (
                                                                     <subItem.icon className="mr-2 size-3" />
                                                                 )}
                                                                 {subItem.title}
-                                                            </a>
+                                                            </Link>
                                                         </SidebarMenuSubButton>
                                                     </SidebarMenuSubItem>
                                                 ))}
@@ -105,10 +106,10 @@ export function SimpleNavMenu({ title, items }: NavMenuGroupProps) {
                                     tooltip={item.title}
                                     className={cn('h-[35px]', isCollapsed && 'justify-center')}
                                 >
-                                    <a href={item.url}>
+                                    <Link href={item.url}>
                                         {item.icon && <item.icon className="size-4" />}
                                         {!isCollapsed && <span>{item.title}</span>}
-                                    </a>
+                                    </Link>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
                         )

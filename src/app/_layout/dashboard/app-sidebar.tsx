@@ -5,7 +5,7 @@ import { cn } from '@/shared/lib/utils'
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, useSidebar } from '@/shared/ui/sidebar'
 import { BarChart, Calendar, Cog, FileText, Instagram, Layers, LayoutDashboard, Twitter, Users } from 'lucide-react'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { SimpleNavMenu } from './simple-nav-menu'
 
@@ -94,12 +94,16 @@ const userData = {
     plan: 'free', // Can be "free", "pro", "business" or null
 }
 
-const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
+const AppSidebar = () => {
     const { state } = useSidebar()
     const isCollapsed = state === 'collapsed'
 
+    useEffect(() => {
+        console.log('roma')
+    }, [])
+
     return (
-        <Sidebar className="!bg-pink-50" collapsible="icon" {...props}>
+        <Sidebar className="!bg-pink-50" collapsible="icon">
             <SidebarHeader className="">
                 <div className="flex items-center gap-2 pt-2">
                     <div className="text-primary">

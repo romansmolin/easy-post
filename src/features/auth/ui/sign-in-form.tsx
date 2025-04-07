@@ -32,8 +32,14 @@ const SignInForm = ({ thirdPartyAuth }: { thirdPartyAuth: JSX.Element }) => {
                 provider: 'credentials',
             })
 
-            toast.success('Signed in successfully!')
-            router.push('/dashboard')
+            if (!res.data.user) {
+                toast.error('User not found!')
+                return res
+            } else {
+                toast.success('Signed in successfully!')
+                console.log(res.data.user)
+                // router.push('/dashboard')
+            }
 
             return res
         } catch (err) {

@@ -1,3 +1,4 @@
+import { LoginButton } from '@/features/auth'
 import { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import { Geist } from 'next/font/google'
@@ -25,7 +26,9 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <body className={`${geistSans.variable} antialiased overflow-x-hidden`}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    <Header />
+                    <Header>
+                        <LoginButton />
+                    </Header>
                     <main className="flex flex-col mx-auto lg:max-w-screen-lg py-20 gap-20 md:gap-24 lg:gap-28">
                         {children}
                     </main>
