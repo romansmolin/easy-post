@@ -1,6 +1,5 @@
 'use client'
 
-import { LoginButton } from '@/features/auth'
 import { ModeSwitcher } from '@/shared/components'
 import { Button } from '@/shared/ui/button'
 import { ArrowBigLeft, LogIn, Menu, X } from 'lucide-react'
